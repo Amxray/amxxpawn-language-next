@@ -38,7 +38,7 @@ import * as Parser from "./parser";
 import * as Types from "./types";
 import * as DM from "./dependency-manager";
 import * as Helpers from "./helpers";
-import { resolvePathVariables } from "../common/helpers";
+import { resolvePathPattern, resolvePathVariables } from "../common/helpers";
 
 const connection = createConnection(ProposedFeatures.all);
 const documentsManager = new TextDocuments(TextDocument);
@@ -343,13 +343,18 @@ connection.onCompletion(
     const data = documentsData.get(document.uri);
     if (!data) return null;
 
+    const includePaths = [
+      ...(syncedSettings?.globalIncludePaths ?? []),
+      ...(syncedSettings?.includePaths ?? [])
+    ];
+
     return Parser.doCompletions(
       connection,
       document.getText(),
       params.position,
       data,
       dependenciesData,
-      syncedSettings?.includePaths || [],
+      includePaths,
     );
   },
 );
@@ -414,11 +419,12 @@ function resolveIncludePath(
     ? URI.parse(workspaceRoot).fsPath
     : undefined;
 
-  const resolvedIncludePaths = (syncedSettings?.includePaths || []).map((p) =>
-    resolvePathVariables(p, workspacePath, documentPath),
-  );
+  const resolvedIncludePaths = [
+      ...(syncedSettings?.globalIncludePaths ?? []),
+      ...(syncedSettings?.includePaths ?? [])
+    ].map(p => resolvePathVariables(p, workspacePath, documentPath));
 
-  const finalIncludePaths = [...resolvedIncludePaths];
+    const finalIncludePaths = [...new Set(resolvedIncludePaths.flatMap(resolvePathPattern))];
   if (localTo !== undefined) {
     finalIncludePaths.unshift(localTo);
   }

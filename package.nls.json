@@ -4,6 +4,6 @@
         "configuration.title": "AMXXPawn Configuration",
         "configuration.reparseInterval.description": "The shortest allowed interval between two syntax re-parses of the same file",
         "configuration.webApiLinks.description": "Should #include statements that contain filenames from the AMXX package link to the Web API Reference",
-        "configuration.includePaths.description": "An array of strings containing include paths for the compiler",
-        "configuration.inlineErrors.description": "Show AMXXPawn's custom inline errors (// error) at the end of the line. Set to false if you use 'Error Lens' or get duplicated texts."
+        "configuration.globalIncludePaths.description": "A global array of strings containing include paths for the compiler",
+        "configuration.includePaths.description": "An array of strings containing include paths for the compiler"
 }
