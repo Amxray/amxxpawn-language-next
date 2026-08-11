@@ -117,15 +117,15 @@
           "default": false,
           "description": "%configuration.webApiLinks.description%"
         },
+        "amxxpawn.globalIncludePaths": {
+          "type": "array",
+          "default": [],
+          "description": "%configuration.globalIncludePaths.description%"
+        },
         "amxxpawn.includePaths": {
           "type": "array",
           "default": [],
           "description": "%configuration.includePaths.description%"
-        },
-        "amxxpawn.inlineErrors": {
-          "type": "boolean",
-          "default": false,
-          "description": "%configuration.inlineErrors.description%"
         }
       }
     }
