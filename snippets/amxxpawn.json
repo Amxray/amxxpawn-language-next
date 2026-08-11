@@ -3,14 +3,13 @@
                 "prefix": "plugin",
                 "body": [
                         "#include <amxmodx>",
-                        "#include <amxmisc>",
                         "",
-                        "#define PLUGIN  \"${1:Plugin Name}\"",
-                        "#define VERSION \"${2:1.0}\"",
-                        "#define AUTHOR  \"${3:Author}\"",
+                        "#define PLUGIN_NAME  \"${1:Plugin Name}\"",
+                        "#define PLUGIN_VERSION \"${2:1.0.0}\"",
+                        "#define PLUGIN_AUTHOR  \"${3:Author}\"",
                         "",
                         "public plugin_init() {",
-                        "\tregister_plugin(PLUGIN, VERSION, AUTHOR)",
+                        "\tregister_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR)",
                         "\t$0",
                         "}"
                 ],
@@ -20,7 +19,7 @@
                 "prefix": "plugin_init",
                 "body": [
                         "public plugin_init() {",
-                        "\tregister_plugin(PLUGIN, VERSION, AUTHOR)",
+                        "\tregister_plugin(PLUGIN_NAME, PLUGIN_VERSION, PLUGIN_AUTHOR)",
                         "\t$0",
                         "}"
                 ],

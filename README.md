@@ -1,139 +1,73 @@
-# AMXXPawn Language - Extended
+# AMXXPawn Language - Next
 
 <p align="center">
-  <img src="images/extension-logo.png" alt="AMXXPawn Language Extended Logo" width="128">
-  <h1 align="center">AMXXPawn Language - Extended</h1>
+  <img src="images/extension-logo.png" alt="AMXXPawn Language Next Logo" width="128">
+  <h1 align="center">AMXXPawn Language - Next</h1>
 </p>
 
 <p align="center">
-  <strong>Uma experiência de desenvolvimento moderna e estendida para a clássica linguagem AMXXPawn, diretamente no seu VS Code.</strong>
+  <strong>A modern, extended development experience for the classic AMXXPawn language, directly inside your VS Code.</strong>
 </p>
 
 > [!IMPORTANT]
-> **DISCLAIMER:** This extension ("AMXXPawn Language - Extended") is a **fork** of the original [AMXXPawn Language](https://marketplace.visualstudio.com/items?itemName=KliPPy.amxxpawn-language) extension by KliPPy. It is not affiliated with the original author. This fork includes specific enhancements for local workflows, improved compilation tasks, and targeted syntax additions that are not present in the original version.
+> **DISCLAIMER:** This extension ("AMXXPawn Language - Next") is a **fork** of [AMXXPawn Language - Extended](https://github.com/NiceFeatures/amxxpawn-language) (which itself is a fork of the original [AMXXPawn Language](https://marketplace.visualstudio.com/items?itemName=KliPPy.amxxpawn-language) extension by KliPPy). It is not affiliated with the original authors. This fork includes specific improvements, updated features, local workflow enhancements, and further syntax/compilation adjustments built upon previous iterations.
 
 <p align="center">
-    <a href="https://marketplace.visualstudio.com/items?itemName=iceeedR.amxx-pawn-language-editor">
-        <img alt="Visual Studio Marketplace Version" src="https://img.shields.io/visual-studio-marketplace/v/iceeedR.amxx-pawn-language-editor?style=for-the-badge&label=Marketplace">
+    <a href="#">
+        <img alt="Visual Studio Marketplace Version" src="https://img.shields.io/badge/Marketplace-v1.0.0-blue?style=for-the-badge">
     </a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=iceeedR.amxx-pawn-language-editor">
-        <img alt="Visual Studio Marketplace Installs" src="https://img.shields.io/visual-studio-marketplace/i/iceeedR.amxx-pawn-language-editor?style=for-the-badge&color=blue">
+    <a href="#">
+        <img alt="Visual Studio Marketplace Installs" src="https://img.shields.io/badge/Installs-0-blue?style=for-the-badge">
     </a>
-    <a href="https://open-vsx.org/extension/iceeedR/amxx-pawn-language-editor">
-        <img alt="Open VSX Installs" src="https://img.shields.io/open-vsx/dt/iceeedR/amxx-pawn-language-editor?style=for-the-badge&color=blue">
+    <a href="#">
+        <img alt="Open VSX Installs" src="https://img.shields.io/badge/Open--VSX-0-blue?style=for-the-badge">
     </a>
 </p>
 
 ---
 
-Este projeto ressuscita e moderniza a experiência de desenvolvimento para scripters de **AMX Mod X**. Se você ama criar plugins para Half-Life, Counter-Strike 1.6 e outros mods GoldSrc, mas sente falta das ferramentas modernas, esta extensão é para você.
+This project resurrects and modernizes the development experience for **AMX Mod X** scripters. If you love creating plugins for Half-Life, Counter-Strike 1.6, and other GoldSrc mods, but miss modern development tools, this extension is for you.
 
-Ela transforma o VS Code em uma IDE poderosa para Pawn, trazendo funcionalidades que antes eram exclusivas de linguagens mais novas.
+It transforms VS Code into a powerful IDE for Pawn, bringing features that were previously exclusive to newer programming languages.
 
-## ✨ Funcionalidades Principais (Versão Extended)
+## ✨ Key Features (Next Version)
 
-Diferente do original, esta versão **Extended** traz otimizações focadas em workflows locais e customizados, juntamente com todas as ferramentas de **Language Server**:
+Building upon the foundations of the **Extended** and original versions, **AMXXPawn Language - Next** delivers optimizations tailored for local and custom workflows, alongside a complete set of **Language Server** tools:
 
-* **🟢 IntelliSense Avançado:** Autocompletar para funções, constantes e variáveis.
-* **🎯 Navegação de Código Inteligente (`Go to Definition`):** Pressione `Ctrl+Click` para pular instantaneamente para a definição de:
-    * Funções (incluindo `public`, `stock`, `native` e com prefixo `@`).
-    * Constantes definidas com `#define`.
-    * Variáveis globais.
-    * **Funções em Tasks:** Navegue diretamente para a função quando o nome dela é passado como texto (ex: `set_task_ex(..., "minha_funcao", ...)`).
-* **🔍 Find All References:** `Shift+F12` em qualquer símbolo para encontrar todas as ocorrências no documento atual e nos includes carregados.
-* **✏️ Rename Symbol:** `F2` para renomear variáveis, funções ou constantes em todo o documento — com proteção contra renomear keywords reservadas do Pawn.
-* **💡 Informações ao Passar o Mouse (Hover):** Passe o mouse sobre uma função ou variável para ver sua definição completa sem sair do lugar.
-* **⚡ Diagnósticos em Tempo Real:** A extensão avisa se um `#include` não pode ser encontrado, ajudando a corrigir erros antes mesmo de compilar.
-* **🔴 Inline Error Display:** Erros de compilação aparecem diretamente na linha do código como texto inline, além do sublinhado vermelho tradicional.
-* **📥 Download Automático do Compilador (Zero Configuração):** Não configurou um compilador? A extensão baixa e configura o compilador automaticamente para você.
-* **🛠️ Compilação Integrada:** Compile seus plugins diretamente do VS Code com um único comando ou pelo botão ▶️ na barra do editor.
+* **🟢 Advanced IntelliSense:** Auto-completion for functions, constants, and variables.
+* **🎯 Smart Code Navigation (`Go to Definition`):** Press `Ctrl+Click` to instantly jump to the definition of:
+    * Functions (including `public`, `stock`, `native`, and `@`-prefixed functions).
+    * Constants defined with `#define`.
+    * Global variables.
+    * **Task Functions:** Navigate directly to a function when its name is passed as a string literal (e.g., `set_task_ex(..., "my_function", ...)`).
+* **🔍 Find All References:** Press `Shift+F12` on any symbol to locate all occurrences within the current document and loaded include files.
+* **✏️ Rename Symbol:** Press `F2` to rename variables, functions, or constants document-wide — with safety protection against renaming reserved Pawn keywords.
+* **💡 Hover Information:** Hover over a function or variable to view its full declaration without leaving your context.
+* **⚡ Real-time Diagnostics:** Alerts you if an `#include` file cannot be found, helping you catch errors prior to compilation.
 
-## 🚀 Instalação
+## 🚀 Installation
 
-1.  Instale o [Visual Studio Code](https://code.visualstudio.com/).
-2.  Abra a aba de **Extensões** (`Ctrl+Shift+X`).
-3.  Procure por `AMXXPawn Language Service`.
-4.  Clique em **Instalar**.
-5.  Recarregue o VS Code e aproveite!
+1. Install [Visual Studio Code](https://code.visualstudio.com/).
+2. Open the **Extensions** tab (`Ctrl+Shift+X`).
+3. Search for `AMXXPawn Language Next`.
+4. Click **Install**.
+5. Reload VS Code and enjoy!
 
-Você também pode instalar diretamente pela [página do Marketplace](https://marketplace.visualstudio.com/items?itemName=iceeedR.amxx-pawn-language-editor).
+## 🛠️ For Developers and Contributors
 
-## ⚙️ Configuração (Opcional - Customização)
+This project is a modernization built on top of the AMXXPawn Language - Extended and original codebases, utilizing TypeScript and the latest vscode-languageclient APIs. Contributions are highly welcome!
 
-Por padrão, a extensão **baixa e configura automaticamente o compilador AMXX (Zero Configuração!)**. Porém, se você quiser usar um compilador próprio ou de uma versão específica, você pode informar o caminho para a extensão.
+To build and test locally:
 
-1.  Abra as Configurações do VS Code (`Ctrl + ,`).
-2.  Clique no ícone de "Abrir settings.json" no canto superior direito.
-3.  Adicione as seguintes propriedades ao seu `settings.json`:
+1. Clone the repository: git clone <your-repository-url>
+2. Install dependencies: npm install
+3. Build and bundle (esbuild): npm run esbuild
+4. Open the project in VS Code and press F5 to start a debugging session.
 
-```json
-{
-    // ...outras configurações...
+## 🙏 Acknowledgments
 
-    // Caminho para o executável do compilador amxxpc.
-    // (Deixe vazio ou não defina nada para usar o compilador padrão auto-baixado)
-    "amxxpawn.compiler.executablePath": "C:\\caminho\\para\\seu\\compiler\\amxxpc.exe",
+This project is a continuation and evolution of AMXXPawn Language - Extended and the original work created by KliPPy. Full credit for the foundational groundwork and original idea goes to the respective original authors and contributors.
 
-    // Lista de pastas onde a extensão deve procurar por arquivos .inc.
-    // (Deixe vazio para usar a pasta include do compilador padrão auto-baixado)
-    "amxxpawn.compiler.includePaths": [
-        "C:\\caminho\\para\\seu\\compiler\\include"
-    ],
+## 📄 License
 
-    // Habilita ou desabilita avisos de erro inline no final da linha (falso por padrão).
-    // Deixe falso se você usa extensões como Error Lens para evitar mensagens duplicadas.
-    "amxxpawn.compiler.inlineErrors": false,
-
-    // --- CONFIGURAÇÃO RECOMENDADA ---
-    // Para uma experiência de autocomplete mais limpa e inteligente,
-    // desativando sugestões genéricas baseadas em palavras do arquivo.
-    "editor.wordBasedSuggestions": "off"
-}
-```
-
-**IMPORTANTE para usuários Windows:** Em arquivos JSON, você deve usar barras invertidas duplas (`\\`) ou barras normais (`/`) nos caminhos.
-
-**Exemplo Prático:**
-```json
-{
-    "amxxpawn.compiler.executablePath": "C:/AMXX/compiler/amxxpc.exe",
-    "amxxpawn.compiler.includePaths": [
-        "C:/AMXX/compiler/include"
-    ]
-}
-```
-
-## ⌨️ Comandos Disponíveis
-
-Abra a Paleta de Comandos (`Ctrl+Shift+P`) e digite `AMXXPawn` para ver os comandos disponíveis:
-
-* **`AMXXPawn: Compile Plugin`:** Compila o arquivo `.sma` atualmente aberto usando o `executablePath` definido nas configurações.
-* **`AMXXPawn: Compile Plugin Local`:** Procura e usa um `amxxpc.exe` que esteja na mesma pasta do arquivo `.sma` que você está editando.
-
-### Atalhos de Teclado
-
-| Atalho | Ação | Descrição |
-|--------|------|----------|
-| `Ctrl+Click` | **Go to Definition** | Pula para a definição do símbolo sob o cursor |
-| `Shift+F12` | **Find All References** | Encontra todas as ocorrências do símbolo no documento e includes |
-| `F2` | **Rename Symbol** | Renomeia todas as ocorrências de uma variável, função ou constante |
-| `▶️ botão` | **Compile Plugin** | Clique no botão play na barra do editor para compilar |
-
-## 🛠️ Para Desenvolvedores e Contribuidores
-
-Este projeto é uma modernização de uma base de código legada, agora utilizando TypeScript e as APIs mais recentes do `vscode-languageclient`. Contribuições são muito bem-vindas!
-
-**Para compilar e testar localmente:**
-
-1.  Clone o repositório: `git clone https://github.com/NiceFeatures/amxxpawn-language.git`
-2.  Instale as dependências: `npm install`
-3.  Compile e faça o bundle (`esbuild`): `npm run esbuild`
-4.  Abra o projeto no VS Code e pressione `F5` para iniciar uma sessão de depuração.
-
-## 🙏 Agradecimentos
-
-Este projeto é uma continuação e modernização do trabalho incrível feito originalmente por **KliPPy**. Todo o crédito pela base sólida e pela ideia original vai para ele.
-
-## 📄 Licença
-
-Este projeto é licenciado sob a **GPL-3.0**. Veja o arquivo `LICENSE` para mais detalhes.
+This project is licensed under the GPL-3.0 License. See the LICENSE file for details.
