@@ -101,7 +101,7 @@ connection.onDidChangeConfiguration(async () => {
             syncedSettings = await connection.workspace.getConfiguration('amxxpawn');
         } catch (e) {
             connection.console.error(`Error fetching configuration: ${e}`);
-            syncedSettings = { compiler: {} as Settings.CompilerSettings, language: {} as Settings.LanguageSettings };
+            syncedSettings = { } as Settings.SyncedSettings;
         }
     }
     // Limpa cache de includes quando configuração muda (paths podem ter mudado)
@@ -164,7 +164,7 @@ connection.onDocumentLinks((params: DocumentLinkParams): DocumentLink[] | null =
     const data = documentsData.get(document.uri);
     if (!data) return null;
 
-    if (syncedSettings?.language?.webApiLinks === true) {
+    if (syncedSettings?.webApiLinks === true) {
         return data.resolvedInclusions.map(inc => {
             let filename = inc.descriptor.filename.replace(/\.inc$/, '');
             const range = Range.create(inc.descriptor.start, inc.descriptor.end);
@@ -288,7 +288,7 @@ connection.onCompletion((params: TextDocumentPositionParams): CompletionItem[] |
     const data = documentsData.get(document.uri);
     if (!data) return null;
 
-    return Parser.doCompletions(connection, document.getText(), params.position, data, dependenciesData, syncedSettings?.compiler?.includePaths || []);
+    return Parser.doCompletions(connection, document.getText(), params.position, data, dependenciesData, syncedSettings?.includePaths || []);
 });
 
 connection.onHover((params: TextDocumentPositionParams): Hover | null => {
@@ -331,7 +331,7 @@ documentsManager.onDidChangeContent((change) => {
 function resolveIncludePath(filename: string, documentPath: string, localTo: string | undefined): string | undefined {
     const workspacePath = workspaceRoot ? URI.parse(workspaceRoot).fsPath : undefined;
 
-    const resolvedIncludePaths = (syncedSettings?.compiler?.includePaths || []).map(p => resolvePathVariables(p, workspacePath, documentPath));
+    const resolvedIncludePaths = (syncedSettings?.includePaths || []).map(p => resolvePathVariables(p, workspacePath, documentPath));
 
     const finalIncludePaths = [...resolvedIncludePaths];
     if (localTo !== undefined) {

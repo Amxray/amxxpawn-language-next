@@ -345,7 +345,7 @@ export function parse(fileUri: URI, content: string, skipStatic: boolean): Types
                                         if (currentVarDecl!.isStatic) prefix.push('static');
                                         if (prefix.length === 0) prefix.push('new');
                                         if (currentVarDecl!.isConst) prefix.push('const');
-                                        
+
                                         const varCleanLabel = prefix.join(' ') + ' ' + trimmedSeg.split('=')[0].trim();
                                         currentFunctionLocals.push({
                                             identifier: varName, line: lineIndex,
@@ -835,7 +835,7 @@ export function doCompletions(
     if (/^\s*#(?:try)?include\s*[<"]/.test(textBeforeCursor)) {
         const includeItems: VSCLS.CompletionItem[] = [];
         const includePathMatch = textBeforeCursor.match(/#(?:try)?include\s*([<"])([^>"]*)$/);
-        
+
         if (includePathMatch) {
             const isLocal = includePathMatch[1] === '"';
             const addedSet = new Set<string>();
@@ -890,7 +890,7 @@ export function doCompletions(
                     });
                 }
             }
-            
+
             return includeItems;
         }
     }
@@ -1210,11 +1210,11 @@ function findIdentifierOccurrences(content: string, identifier: string, uri: str
     const lines = content.split(/\r?\n/);
     const escapedId = identifier.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');
     const regex = new RegExp(`(?<![a-zA-Z0-9_@])${escapedId}(?![a-zA-Z0-9_@])`, 'g');
-    
+
     let inBlockComment = false;
     for (let i = 0; i < lines.length; i++) {
         let line = lines[i];
-        
+
         if (inBlockComment) {
             const endIdx = line.indexOf('*/');
             if (endIdx >= 0) {
@@ -1224,7 +1224,7 @@ function findIdentifierOccurrences(content: string, identifier: string, uri: str
                 continue;
             }
         }
-        
+
         while (line.includes('/*')) {
             const startIdx = line.indexOf('/*');
             const endIdx = line.indexOf('*/', startIdx + 2);
@@ -1238,7 +1238,7 @@ function findIdentifierOccurrences(content: string, identifier: string, uri: str
         }
 
         let cleanLine = line.replace(/\/\/.*/, match => ' '.repeat(match.length));
-        
+
         // Only strip strings if we are NOT searching for a callable/callback.
         // Pawn heavily uses string-based callbacks (e.g. set_task(1.0, "@MyTask")).
         if (!searchInStrings) {
@@ -1257,15 +1257,15 @@ function findIdentifierOccurrences(content: string, identifier: string, uri: str
 }
 
 export function getUsageTokens(
-    content: string, 
-    data: Types.DocumentData, 
+    content: string,
+    data: Types.DocumentData,
     dependenciesData: Map<DM.FileDependency, Types.DocumentData>
 ): Types.SemanticToken[] {
     const tokens: Types.SemanticToken[] = [];
     const symbols = Helpers.getSymbols(data, dependenciesData);
-    
+
     const symbolMap = new Map<string, { type: number, modifier: number }>();
-    
+
     // Build a set of value identifiers for priority resolution:
     // 'new const' variables go into values (type 2), NOT constants (type 3)
     const valueIdentifiers = new Set<string>();
@@ -1291,7 +1291,7 @@ export function getUsageTokens(
     let inBlockComment = false;
     for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
         let line = lines[lineIndex];
-        
+
         if (inBlockComment) {
             const endIdx = line.indexOf('*/');
             if (endIdx >= 0) {
@@ -1301,7 +1301,7 @@ export function getUsageTokens(
                 continue;
             }
         }
-        
+
         while (line.includes('/*')) {
             const startIdx = line.indexOf('/*');
             const endIdx = line.indexOf('*/', startIdx + 2);
@@ -1324,7 +1324,7 @@ export function getUsageTokens(
         while ((tagMatch = tagRegex.exec(cleanLine)) !== null) {
             const tagName = tagMatch[1];
             const char = tagMatch.index;
-            
+
             const existing = data.semanticTokens.find(t => t.line === lineIndex && t.char === char);
             if (existing) continue;
 
@@ -1339,10 +1339,10 @@ export function getUsageTokens(
         while ((match = regex.exec(cleanLine)) !== null) {
             const ident = match[0];
             const char = match.index;
-            
+
             // Skip keywords (handled by TextMate), but we ALREADY handled tags above
             if (pawnKeywords.includes(ident)) continue;
-            
+
             const existing = data.semanticTokens.find(t => t.line === lineIndex && t.char === char) ||
                              tokens.find(t => t.line === lineIndex && t.char === char);
             if (existing) continue;

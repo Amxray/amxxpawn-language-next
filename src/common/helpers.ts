@@ -32,7 +32,7 @@ export function resolvePathVariables(path: string, workspacePath: string | undef
             const startIndex = index;
             index += 2;
             const endIndex = path.indexOf('}', index);
-            
+
             if (endIndex === -1) { // Não encontrou '}'
                 finalPath += path.substring(startIndex);
                 break;

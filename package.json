@@ -37,7 +37,6 @@
     ],
     "activationEvents": [],
     "main": "./dist/client.js",
-    "l10n": "./l10n",
     "contributes": {
         "configurationDefaults": {
             "[amxxpawn]": {
@@ -94,100 +93,27 @@
             "type": "object",
             "title": "%configuration.title%",
             "properties": {
-                "amxxpawn.language.reparseInterval": {
+                "amxxpawn.reparseInterval": {
                     "type": "number",
                     "default": 1500,
-                    "description": "%configuration.language.reparseInterval.description%"
+                    "description": "%configuration.reparseInterval.description%"
                 },
-                "amxxpawn.language.webApiLinks": {
+                "amxxpawn.webApiLinks": {
                     "type": "boolean",
                     "default": false,
-                    "description": "%configuration.language.webApiLinks.description%"
+                    "description": "%configuration.webApiLinks.description%"
                 },
-                "amxxpawn.compiler.executablePath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "%configuration.compiler.executablePath.description%"
-                },
-                "amxxpawn.compiler.includePaths": {
+                "amxxpawn.includePaths": {
                     "type": "array",
                     "default": [],
-                    "description": "%configuration.compiler.includePaths.description%"
+                    "description": "%configuration.includePaths.description%"
                 },
-                "amxxpawn.compiler.options": {
-                    "type": "array",
-                    "default": [],
-                    "description": "%configuration.compiler.options.description%"
-                },
-                "amxxpawn.compiler.showInfoMessages": {
+                "amxxpawn.inlineErrors": {
                     "type": "boolean",
                     "default": false,
-                    "description": "%configuration.compiler.showInfoMessages.description%"
-                },
-                "amxxpawn.compiler.reformatOutput": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "%configuration.compiler.reformatOutput.description%"
-                },
-                "amxxpawn.compiler.outputType": {
-                    "type": "string",
-                    "default": "source",
-                    "description": "%configuration.compiler.outputType.description%",
-                    "enum": [
-                        "source",
-                        "path"
-                    ]
-                },
-                "amxxpawn.compiler.outputPath": {
-                    "type": "string",
-                    "default": "",
-                    "description": "%configuration.compiler.outputPath.description%"
-                },
-                "amxxpawn.compiler.switchToOutput": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "%configuration.compiler.switchToOutput.description%"
-                },
-                "amxxpawn.compiler.inlineErrors": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "%configuration.compiler.inlineErrors.description%"
+                    "description": "%configuration.inlineErrors.description%"
                 }
             }
-        },
-        "commands": [
-            {
-                "command": "amxxpawn.compile",
-                "title": "%command.compile.title%",
-                "category": "%command.category%",
-                "icon": "$(play)"
-            },
-            {
-                "command": "amxxpawn.compileLocal",
-                "title": "%command.compileLocal.title%",
-                "category": "%command.category%"
-            },
-            {
-                "command": "amxxpawn.createPlugin",
-                "title": "%command.createPlugin.title%",
-                "category": "%command.category%"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "amxxpawn.compile",
-                "key": "f9",
-                "when": "editorTextFocus && editorLangId == 'amxxpawn'"
-            }
-        ],
-        "menus": {
-            "editor/title": [
-                {
-                    "command": "amxxpawn.compile",
-                    "when": "resourceExtname == .sma || resourceExtname == .inc",
-                    "group": "navigation"
-                }
-            ]
         }
     },
     "scripts": {
