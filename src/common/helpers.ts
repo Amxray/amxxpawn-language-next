@@ -1,11 +1,14 @@
 import * as Path from "path";
-import { URI } from "vscode-uri"; // Corrigido
 
 function substituteVariables(
   variable: string,
   workspacePath: string | undefined,
   filePath: string | undefined,
 ): string | undefined {
+  if (variable.startsWith("env:")) {
+    const envName = variable.slice("env:".length);
+    return process.env[envName];
+  }
   switch (variable) {
     case "workspaceRoot":
       return workspacePath;
